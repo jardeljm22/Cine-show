@@ -1,0 +1,17 @@
+:root {
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  background-image: linear-gradient(0deg,rgb(17, 14, 23),rgb(19, 23, 43),rgb(3, 5, 20));
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+ 
+}
+
+ @media (max-width: 1024px) {
+  :root{
+     font-size: 16px;
+    }
+   
+  }

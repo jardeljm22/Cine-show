@@ -1,0 +1,159 @@
+.filme-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position:relative;
+    justify-content: center;
+    overflow: hidden;
+}
+  .background-filme{
+    box-sizing: border-box;
+    height: 890px;
+    max-width: 100%;
+
+  }
+
+  .background-filme img  {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .information-filme{
+    position: absolute;
+    max-width: 900px;
+    background-color: rgba(15, 15, 15, 0.601);
+    top: 0;
+    box-shadow: 2px 2px 3px rgba(31, 30, 30, 0.82);
+    border-radius:10px;
+    height: 100%;
+
+}
+.dados-filme{
+  display: flex;
+  flex-direction: column;
+  padding: 20px 25px;
+}
+
+.div-player{
+  padding: 15px 30px;
+  background-color: rgba(79, 79, 79, 0.362);
+  border-radius: 8px;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  box-shadow: 2px 2px 3px rgb(99, 96, 96);
+  margin-top: 50px;
+}
+.div-player:hover{
+  transform: scale(1.04);
+  cursor: pointer;
+  background-color: aquamarine;
+  color: rgb(73, 73, 231);
+
+}
+
+.information-filme-nota-e-etc{
+  display: flex;
+  margin-top: 50px;
+}
+.titulo-filme{
+  font-size: 60px;
+  color: rgb(242, 190, 58);
+  box-sizing: border-box;
+}
+.nota-filme{
+  color: yellow;
+  padding-left: 5px;
+}
+.genero-filme{
+  padding : 10px;
+  background-color: rgba(63, 63, 63, 0.642);
+  width: 100%;
+}
+  .row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    background-color: rgba(50, 49, 49, 0.564);
+    padding:0 20px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px black;
+}
+
+.mostrar-div-player-filme{
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(83, 79, 79, 0.639);
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition: visibility,opacity 0.3s ease;
+
+}
+.nao-mostrar-div-player-filme{
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+.mostrar-div-player-filme  button{
+  width: 80px;
+  color: darkred;
+  background-color: rgb(57, 57, 116);
+  padding:0 5px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.mostrar-div-player-filme  button:hover{
+  color: rgb(58, 3, 3);
+  background-color: rgb(101, 101, 174);
+}
+
+@media(max-width : 720px){
+  .filme-container {
+    overflow: auto;
+  }
+  .information-filme{
+    top: 300px;
+    background-color: rgba(46, 46, 46, 0.482);
+    height: auto;
+    transform: scale(0.8);
+  }
+  .nome-filme{
+    font-size: 60px;
+  }
+  .div-player{
+    transform: scale(0.7);
+  }
+  .div-player:hover{
+    transform: scale(0.75);
+
+}
+  .row{
+    transform: scale(0.7);
+}
+.genero-filme{
+  font-size: 18px;
+}
+.titulo-filme{
+  font-size: 50px;
+
+}
+}
+
+@media(max-width : 1200px){
+  .information-filme{
+    left: 50%;
+    transform: translateX(-50%) ;
+    width: 98%;
+
+  }
+}
