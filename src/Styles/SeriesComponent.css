@@ -1,0 +1,12 @@
+
+.div-mensagem-serie{
+    width: 90%;
+    height: 490px;
+    padding-left : 20px ;
+}
+@media(max-width : 780px){
+    .div-mensagem-serie{
+    height: 554px;
+
+}
+}

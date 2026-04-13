@@ -5,7 +5,7 @@ import{
     ,getFilmesPopulares,
     getProcuraFilmePorNome
 } from '../service/service'
-import "../Styles/Filmes_container.css"
+import "../Styles/Filmes_component.css"
 import { SkipBack,SkipForward }  from 'lucide-react'
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
@@ -23,6 +23,7 @@ const Filmes = ({ tipoDeBuscaFilme , nomeFilme='' }) =>{ // sempre será retorna
     }
 
     useEffect(()=>{
+        window.scrollTo(0,0);
         if(tipoDeBuscaFilme){
             switch( tipoDeBuscaFilme ){
                 case "1" : {

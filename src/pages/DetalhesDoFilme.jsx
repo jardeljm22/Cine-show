@@ -4,6 +4,8 @@ import { getDetalhesFilme,getElencoFilme } from '../service/service';
 import {Play} from 'lucide-react'
 import '../Styles/DetalhesDoFilme.css'
 import { useParams } from "react-router-dom";
+import Footer from "../components/footer";
+
 
 const DetalhesDoFilme = () =>{
 
@@ -34,6 +36,7 @@ const DetalhesDoFilme = () =>{
     }
 
     useEffect(()=>{
+        window.scrollTo(0,0)
         const buscaDetalhes = async ()=>{
             console.log("id recebido no  container : ",id)
             const filme = await getDetalhesFilme(id);
@@ -64,7 +67,7 @@ const DetalhesDoFilme = () =>{
                             <h1 className="titulo-filme" >{filme.title}</h1>
                             <h3>{filme.release_date?.slice(0,4)} &nbsp; - &nbsp;{tempoFilme} </h3>
                             <h2 className="genero-filme" > {filme.genres?.map((gen)=>' ' + gen.name +' ').join(',')} </h2>
-                            <h3><p>{filme.overview}</p></h3>
+                            <h3><p className="descfilmes-description-filme" >{filme.overview}</p></h3>
                             <div className="div-player" onClick={assistirFilme} >
                                 <Play color="#ffffff" />
                                 <h2>Assistir Filme</h2>
@@ -85,9 +88,11 @@ const DetalhesDoFilme = () =>{
                     <div className={`${assistir? 'mostrar-div-player-filme': 'nao-mostrar-div-player-filme' }`} >
                         <button onClick={assistirFilme} >fechar</button>
                         {
-                            assistir&&<iframe src={`https://superflixapi.rest/filme/${filme.imdb_id}`} title={`${filme.title}`} allowFullScreen={true} allow="autoplay; encrypted-media; picture-in-picture"  frameborder="0" scrolling="no" style={{width:'95%',height:'800px',border:0,borderRadius:'12px' }}></iframe>
+                            assistir&&<iframe src={`https://superflixapi.rest/filme/${filme.imdb_id}`} title={`${filme.title}`} allowFullScreen={true} allow="autoplay; encrypted-media; picture-in-picture"  frameborder="0" style={{width:'95%',height:'800px',border:0 }}></iframe>
                         }
                     </div>
+                    <Footer/>
+
                 </div>
             );
         }else{

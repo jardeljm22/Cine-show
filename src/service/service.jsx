@@ -9,12 +9,12 @@ const axiostmdb = axios.create({
     params:{  
         api_key :  import.meta.env.VITE_TMDB_API_KEY, // RECEBENDO A API KEY DA .ENV
         language : 'pt-BR',
-    }
+    }   
 })   
 
 //  verificar o tipo de busca na documentacao abaixo e ao lado das urls 
 
-const urlFilmesLancamento = 'movie/upcoming';         //  tipo de busca (  1  )
+const urlFilmesLancamento = 'movie/now_playing';         //  tipo de busca (  1  )
 const urlFilmesPopulares = 'movie/popular' ;          //  tipo de busca (  2  )   // url para buscar filmes populares
 const urlBuscarFilmesTopAvaliados = 'movie/top_rated' //  tipo de busca (  3  )
 const urlBuscarFilmePorNome = 'search/movie?';  //  colocar a variavel nome do filme depois dela

@@ -14,7 +14,6 @@ const Container =  ({ tipoDeBuscaFilme })=>{
 
     const verDetalhesFilme = (id) =>{
         navigate(`/detalhesFilme/${id}`)
-
     }
 
     useEffect(()=>{
@@ -64,13 +63,8 @@ const Container =  ({ tipoDeBuscaFilme })=>{
                         }
                     )
                 }
-                
             </div>
         </section>
-        
-
     )
 }
-
-
 export default Container;

@@ -2,6 +2,8 @@
 import ComponentFilmes  from '../components/Filmes'
 import Header from '../components/Header'
 import { useParams } from 'react-router-dom'
+import Footer from '../components/footer'
+
 
 const Filmes = ()=> {
 
@@ -15,7 +17,7 @@ const Filmes = ()=> {
         <div>
             <Header/>
             <ComponentFilmes nomeFilme={nomefilme} tipoDeBuscaFilme={tipoDeBusca} />
-
+            <Footer/>
         </div>
     )
 }
