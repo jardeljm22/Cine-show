@@ -27,6 +27,7 @@
     border-radius:10px;
     height: 78%;
     box-sizing: border-box;
+    overflow: hidden;
 
 }
 .dados-filme{
@@ -85,7 +86,14 @@
 }
 .descfilmes-description-filme{
   text-indent : 30px;
-  text-align: center;
+  text-align: justify;
+  background-color: rgba(5, 5, 5, 0.706);
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: clamp(14px, 2.5vw, 18px);
+  line-height: 1.6;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .mostrar-div-player-filme{
@@ -128,31 +136,43 @@
   }
   .information-filme{
     position:relative;
-    top: -617px;
+    margin-top: -630px;
     display: flex;
-    margin-bottom: -665px;
-    
-  }
-  .nome-filme{
-    font-size: 60px;
+    margin-bottom: 0px;
+    width: 95%;
+    height: auto; 
   }
   .div-player{
-    transform: scale(0.7);
+    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
   }
   .div-player:hover{
-    transform: scale(0.75);
-
-}
+    transform: scale(0.52);
+    -webkit-transform: scale(0.52);
+    -moz-transform: scale(0.52);
+    -ms-transform: scale(0.52);
+    -o-transform: scale(0.52);
+  }
+  .descfilmes-description-filme{
+    width: 99%;
+    font-size: 14px;
+  }
+  .data-tempo-filme{
+    font-size: 16px;
+  }
   .row{
-    transform: scale(0.7);
-}
-.genero-filme{
-  font-size: 18px;
-}
-.titulo-filme{
-  font-size: 50px;
+    font-size: 8px;
+  }
+  .genero-filme{
+    font-size: 14px;
+  }
+  .titulo-filme{
+    font-size: 30px;
 
-}
+  }
 }
 
 @media(max-width : 1200px){

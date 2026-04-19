@@ -9,7 +9,6 @@ const Filmes = ()=> {
 
     // eslint-disable-next-line no-unused-vars
     const { nomefilme ,tipoDeBusca } = useParams()
-    console.log('tipo de pesquisa : ', tipoDeBusca)
     
     
     return (

@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { getDetalhesFilme,getElencoFilme } from '../service/service';
+import { getDetalhesFilme,getElencoFilme } from '../services/service';
 import {Play} from 'lucide-react'
 import '../Styles/DetalhesDoFilme.css'
 import { useParams } from "react-router-dom";
@@ -40,7 +40,7 @@ const DetalhesDoFilme = () =>{
         const buscaDetalhes = async ()=>{
             console.log("id recebido no  container : ",id)
             const filme = await getDetalhesFilme(id);
-            converteHoras(filme.runtime);
+            converteHoras(filme.data.data.runtime);
             console.log(`o filme tem ${tempoFilme} `)
             setFilme(filme);
         }
@@ -52,22 +52,22 @@ const DetalhesDoFilme = () =>{
         diretorFilme(id);
         buscaDetalhes();
 
-    },[id]);
+    },[id,tempoFilme]);
 
-        if(filme){
+        if(filme.sucess === true){
 
             return (
                 <div className="filme-container">
 
                     <div className="background-filme" >
-                        <img src={  filme.backdrop_path&&`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt="" />
+                        <img src={  filme.data.data.backdrop_path&&`https://image.tmdb.org/t/p/original/${filme.data.data.backdrop_path}`} alt="" />
                     </div>
                     <div className="information-filme" >
                         <div className="dados-filme" >
-                            <h1 className="titulo-filme" >{filme.title}</h1>
-                            <h3>{filme.release_date?.slice(0,4)} &nbsp; - &nbsp;{tempoFilme} </h3>
-                            <h2 className="genero-filme" > {filme.genres?.map((gen)=>' ' + gen.name +' ').join(',')} </h2>
-                            <h3><p className="descfilmes-description-filme" >{filme.overview}</p></h3>
+                            <h1 className="titulo-filme" >{filme.data.data.title}</h1>
+                            <h3 className="data-tempo-filme" >{filme.data.data.release_date?.slice(0,4)} &nbsp; - &nbsp;{tempoFilme} </h3>
+                            <h2 className="genero-filme" > {filme.data.data.genres?.map((gen)=>' ' + gen.name +' ').join(',')} </h2>
+                            <h3><p className="descfilmes-description-filme" >{filme.data.data.overview}</p></h3>
                             <div className="div-player" onClick={assistirFilme} >
                                 <Play color="#ffffff" />
                                 <h2>Assistir Filme</h2>
@@ -75,7 +75,7 @@ const DetalhesDoFilme = () =>{
                             <div className="information-filme-nota-e-etc" >
                                 <div className="row" >
                                     <h2><strong>Nota&nbsp;:&nbsp;</strong></h2>
-                                    <h2 className="nota-filme" >{ filme.vote_average?.toFixed(1) /* toFixed mostra quantas casas decimais foi pedido,no caso foi (1) */ }</h2>
+                                    <h2 className="nota-filme" >{ filme.data.data.vote_average?.toFixed(1) /* toFixed mostra quantas casas decimais foi pedido,no caso foi (1) */ }</h2>
                                 </div>
                                 <div className="row" >
                                     <h2><strong>Diretor&nbsp;:&nbsp;</strong></h2>
@@ -88,7 +88,7 @@ const DetalhesDoFilme = () =>{
                     <div className={`${assistir? 'mostrar-div-player-filme': 'nao-mostrar-div-player-filme' }`} >
                         <button onClick={assistirFilme} >fechar</button>
                         {
-                            assistir&&<iframe src={`https://superflixapi.rest/filme/${filme.imdb_id}`} title={`${filme.title}`} allowFullScreen={true} allow="autoplay; encrypted-media; picture-in-picture"  frameborder="0" style={{width:'95%',height:'800px',border:0 }}></iframe>
+                            assistir&&<iframe src={`https://superflixapi.rest/filme/${filme.data.data.imdb_id}`} title={`${filme.data.data.title}`} allowFullScreen={true} allow="autoplay; encrypted-media; picture-in-picture"  frameborder="0" style={{width:'95%',height:'800px',border:0 }}></iframe>
                         }
                     </div>
                     <Footer/>

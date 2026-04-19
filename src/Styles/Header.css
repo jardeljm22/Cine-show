@@ -10,7 +10,7 @@
     align-items: center;
     box-shadow: 3px 3px 5px black;
     border-radius: 15px;
-    margin-top: -7px;
+    margin-top:-2px;
     min-height: 110px;
     position: relative;
     z-index: 2;
@@ -115,9 +115,10 @@
  }
  .links-filmes-header{
     text-decoration: none;
-    font-size: 22px;
+    font-size: 17px;
     padding: 5px 10px;
     color: white;
+    gap: 5px;
  }
  .links-filmes-header:hover{
     color: rgb(150, 58, 184);
@@ -161,6 +162,8 @@
     padding: 5px;
     border-radius: 5px;
     font-size: 17px;
+    border: none;
+    box-shadow: 1px 1px white;
 }
 .header-div-Buscar-filme input::placeholder{
     color: darkcyan;
@@ -175,6 +178,7 @@
     margin-left: 5px;
     padding: 5px 5px;
     border-radius: 7px;
+    border: none;
 
 }
 .header-div-Buscar-filme button:hover{
@@ -202,10 +206,10 @@
 .menu-icon-header{
     display: none;
     pointer-events: none;
-    size: 30px;
     box-shadow: 2px 2px 3px black;
     padding: 8px 8px;
     border-radius: 7px;
+    width: 30px;
 
 }
 .menu-icon-header:hover{
@@ -232,12 +236,10 @@
     visibility: visible;
     display: flex;
     justify-content: center;
-    transition: all 0.2s;
 }
 .div-menu-central-off{
     visibility: hidden;
     pointer-events: none;
-    transition: all 0.2s ;
 }
 .nav-information{
     margin-top: 75px;
@@ -263,17 +265,19 @@
     justify-content: flex-start;
     padding: 20px 15px;
     width: 200px;
-    box-shadow: 1px 1px 3px white;
+    box-shadow: 0 0 6px 1px white;
     border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(5px);
+    -moz-backdrop-filter: blur(5px);
+    -ms-backdrop-filter: blur(5px);
+    -o-backdrop-filter: blur(5px);
+
 }
 .options strong{
     padding: 0 15px;
     border-radius: 5px;
-    font-size: 25px;
+    font-size: 22px;
     margin-top: 10px;
     background-color: rgb(60, 60, 59);
     -webkit-border-radius: 5px;
@@ -293,11 +297,15 @@
 
 .options-filmes-off{
     display: none;
+    transition: all 0.2s;
 }
 .options-filmes{
     display: block;
     list-style: none;
-
+    transition: all 0.2s;
+}
+.options-filmes li{
+    margin: 15px 0;
 }
 @media(max-width : 1200px){
      .div-logo{
@@ -322,10 +330,33 @@
     }
   
 }
-@media (min-width : 851px ){
-    .div-menu-central-on{
-    visibility: hidden;
-    pointer-events: none;
-    transition: all 0.2s ;
+
+@media (max-width : 500px){
+    .header{
+        width: 95%;
+        height: auto;
+        overflow: hidden;
+    }
+    .header-div-Buscar-filme{
+    display: flex;
+    border-radius: 15px;
+    align-items: center;
+    position: relative;
+}
+.mensage-alerta-header-visivel strong{
+    font-size: 13px;
+}
+
+.header-div-Buscar-filme input{
+
+    font-size: 12px;
+}
+.header-div-Buscar-filme input::placeholder{
+    color: darkcyan;
+    font-size: 12px;
+
+}
+.header-div-Buscar-filme button{
+    font-size: 12px;
     }
 }

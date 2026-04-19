@@ -10,9 +10,9 @@ const Home = () =>{
 
         <div style={{overflow : 'hidden'}}>
             <Header />
-            <Container tipoDeBuscaFilme={1} />
-            <Container tipoDeBuscaFilme={2} />
-            <Filmes categoria={true}  tipoDeBuscaFilme={'1'} /> {// tipo de filme tem q ser do tipo string
+            <Container tipoDeBuscaFilme={'1'} page={1} />
+            <Container tipoDeBuscaFilme={'2'} page={4}   />
+            <Filmes   tipoDeBuscaFilme={'1'} pageFilme={2} /> {// tipo de filme tem q ser do tipo string
             }
             <Footer/>
         </div>

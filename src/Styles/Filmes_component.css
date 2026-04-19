@@ -1,5 +1,6 @@
 .article-filmes{
     width: 1260px;
+    height: auto;
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -23,7 +24,7 @@
     display: flex;
     flex-direction: column;
     width: 300px;
-    height: 520px;
+    height: 470px;
     align-items: center;
     box-sizing: border-box;
     background-image: linear-gradient(45deg,rgb(22, 24, 36),rgb(39, 40, 52),rgb(18, 19, 28));
@@ -42,7 +43,7 @@
 }
 .informations-article-filme img {
     width: 95%;
-    height: 400px;
+    height: 350px;
     padding-top: 5px;
 }
 .informations-article-filme h2 {
@@ -51,7 +52,8 @@
     overflow: hidden;
     text-align: center;
     width: 90%;
-    font-size: 22px;
+    height: 45px;
+    font-size: 20px;
     text-shadow: 2px 2px black;
 }
 
@@ -70,19 +72,19 @@
 }
 .mudar-pagina-filmes::after{
     content: '';
-    background-image: linear-gradient(90deg,rgb(115, 39, 115) -20%,black 70%,rgb(48, 145, 180));
+    background-image: conic-gradient(90deg,rgb(115, 39, 115) ,black 50% ,rgb(48, 145, 180));
     filter: blur(10px);
     position: absolute;
-    inset: 1px;
+    inset: -3px;
     border-radius: 40px;
     -webkit-filter: blur(5px);
     z-index: -1;
 }
 .mudar-pagina-filmes::before{
     content: '';
-    inset: -2px;
+    inset: -1px;
     position: absolute;
-    background-image: linear-gradient(90deg,rgb(115, 39, 115) -20%,black 50%,rgb(48, 145, 180));
+    background-image: conic-gradient(90deg,rgb(115, 39, 115) ,black  50%,rgb(48, 145, 180));
     border-radius: 40px;
     z-index: -1;
 }
@@ -133,7 +135,7 @@
 
 @media(max-width : 1000px ){
     .article-filmes{
-        width: 650px;
+        width: 100%;
     }
     .container-article-filmes{
         width: 100%;
@@ -154,14 +156,41 @@
         font-size: 13px;
     }
     .mudar-pagina-filmes{
-        transform: scale(0.5);
+        width: 200px;
+        padding: 0 10px;
     }
-    .mudar-pagina-filmes::before,.mudar-pagina-filmes::after{
-       background-image: linear-gradient(transparent);
+    .mudar-pagina-filmes h3 {
+        font-size: 10px;
+        padding: 5px;
     }
+    .botoes-pagina-filmes-left{
+        width: 15px;
+    }
+    .botoes-pagina-filmes-right{
+        width: 15px;
+    }
+
 }
-@media(max-width : 700px ){
-        .article-filmes{
-        width: 445px;
+@media(max-width : 500px ){
+    .article-filmes{
+        width: 350px;
+    }
+    .informations-article-filme{
+        width: 150px;
+        height: 270px;
+    }
+    .informations-article-filme img {
+        width: 95%;
+        height: 180px;
+        padding-top: 5px;
+    }   
+    .container-article-filmes{
+        width: 100%;
+        justify-content: space-around;
+
+    }
+
+    .informations-article-filme h2 {
+        font-size: 14px;
     }
 }
