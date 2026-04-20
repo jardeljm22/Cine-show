@@ -129,7 +129,12 @@
   color: rgb(58, 3, 3);
   background-color: rgb(101, 101, 174);
 }
-
+.center-screen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 @media(max-width : 720px){
   .filme-container {
     overflow: hidden;
@@ -171,7 +176,6 @@
   }
   .titulo-filme{
     font-size: 30px;
-
   }
 }
 

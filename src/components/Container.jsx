@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import '../Styles/Container.css';
 import { useNavigate } from "react-router-dom";
 import { useReturnFilmes } from "../hooks/useReturnFilmes";
-
+import Loading from "./loading";
 
 const Container =  ({ tipoDeBuscaFilme,page })=>{
 
     const [nomeDescricao,setNomeDescricao] = useState('');
-    const {listaFilmes} = useReturnFilmes({tipoDeBuscaFilme : tipoDeBuscaFilme,pageInicial : page})
+    const {listaFilmes,loading,error} = useReturnFilmes({tipoDeBuscaFilme : tipoDeBuscaFilme,pageInicial : page})
     const urlImage = import.meta.env.VITE_TMDB_URL_IMAGE;
 
     const navigate = useNavigate()
@@ -48,30 +48,37 @@ const Container =  ({ tipoDeBuscaFilme,page })=>{
         setNomeDescricao(resultado);
     },[]) ;   
     
-    if(listaFilmes.sucess === true ){
-        return(
-            <section className="section-container">
-                <div className="description-container" >
-                    <h1 onClick={()=>{tipoDeBusca(tipoDeBuscaFilme)}} >{ nomeDescricao  }</h1>
-                </div>
-                <div className="div-container">
-                    {listaFilmes?.data?.data?.results?.map((objeto)=>{
-                        return (
-                            <div  onClick={()=>{verDetalhesFilme(objeto.id)}} key={objeto.id} className="div-container-information" >
-                                <img  src={`${urlImage}${objeto.poster_path}`} alt="imagens do filme" />
-                                <h3 > { objeto.title } </h3>
-                            </div>
-                        )
-                        })
-                    }
-                    <div  onClick={()=>{tipoDeBusca(tipoDeBuscaFilme)}} key={25} className="div-container-information" >
-                          <p style={{marginTop:'120px'}}>mais filmes...</p>      
-                    </div>
-                </div>
-            </section>
-        )
-    }else{
-        return <h1> carregando dados ...</h1>
+    if(loading){
+        return <Loading />
     }
+    if(error){
+        return(
+            <div className="centraliza-div" >
+                <h1>{error}</h1>
+            </div> 
+        ) 
+    }
+    return(
+        <section className="section-container">
+            <div className="description-container" >
+                <h1 onClick={()=>{tipoDeBusca(tipoDeBuscaFilme)}} >{ nomeDescricao  }</h1>
+            </div>
+            <div className="div-container">
+                {listaFilmes?.map((objeto)=>{
+                    return (
+                        <div  onClick={()=>{verDetalhesFilme(objeto.id)}} key={objeto.id} className="div-container-information" >
+                            <img  src={`${urlImage}${objeto.poster_path}`} alt="imagens do filme" />
+                            <h3 > { objeto.title } </h3>
+                        </div>
+                    )
+                    })
+                }
+                <div  onClick={()=>{tipoDeBusca(tipoDeBuscaFilme)}} key={25} className="div-container-information" >
+                        <p style={{marginTop:'120px'}}>mais filmes...</p>      
+                </div>
+            </div>
+        </section>
+    )
+    
 }
 export default Container;
