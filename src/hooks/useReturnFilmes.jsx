@@ -40,7 +40,8 @@ export function useReturnFilmes({ tipoDeBuscaFilme,nomeFilme,pageInicial }) {
                             setPage(1);
                             nomeRef.current = nomeFilme;
                         }
-                            resultado = await getProcuraFilmePorNome(nomeFilme,page);
+                        resultado = await getProcuraFilmePorNome(nomeFilme,page);
+                        console.log('esta funcionando',resultado)
                 }
 
                     setListaFilmes(resultado.results);

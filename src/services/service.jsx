@@ -35,17 +35,17 @@ export const getFilmesPopulares = async ( page=1 ) => {
 export const getFilmesBemAvaliados = async (page=1) =>{
 
     const resultado = await axiostmdb.get(urlBuscarFilmesTopAvaliados ,{ params:{ page : page }})
-    return  resultado;
+    return  resultado.data;
 
 }
   // função de procurar filme por nome | tipo de busca (  4  )
 export const getProcuraFilmePorNome = async (nome,page=1) =>{
     const resultado = await axiostmdb.get(urlBuscarFilmePorNome ,{params : { query : nome ,page : page }});
-    return  resultado;
+    return  resultado.data;
 }
 export const getDetalhesFilme = async (id) => {
     const filme = await axiostmdb.get(urlDetalhesDeUmFilme + id);
-    return filme;
+    return filme.data;
 }
 // recebe o elenco e a producao do filme 
 export const getElencoFilme = async (id) => {
