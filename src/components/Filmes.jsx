@@ -3,7 +3,7 @@ import "../Styles/Filmes_component.css"
 import { SkipBack,SkipForward }  from 'lucide-react'
 import { useNavigate } from "react-router-dom";
 import {useReturnFilmes} from "../hooks/useReturnFilmes";
-import Loading from "./loading";
+import Loading from "./Loading";
 
 const Filmes = ({ tipoDeBuscaFilme , nomeFilme='' ,pageFilme}) =>{ // sempre será retornado ou tipo de filme ou o nome do filme
 

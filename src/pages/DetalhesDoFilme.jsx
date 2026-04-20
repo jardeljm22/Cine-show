@@ -5,7 +5,7 @@ import {Play} from 'lucide-react'
 import '../Styles/DetalhesDoFilme.css'
 import { useParams } from "react-router-dom";
 import Footer from "../components/footer";
-import Loading from "../components/loading";
+import Loading from "../components/Loading";
 
 
 const DetalhesDoFilme = () =>{
