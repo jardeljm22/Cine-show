@@ -20,7 +20,12 @@ const DetalhesDoFilme = () =>{
     }
 
     if(loading){
-        return <Loading/>
+        return (
+            < div>
+                <Loading/>
+                <Footer/>
+            </ div>
+        )
     }
     if(error){
         return <div className="center-screen" >
