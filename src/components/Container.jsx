@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import '../Styles/Container.css';
 import { useNavigate } from "react-router-dom";
 import { useReturnFilmes } from "../hooks/useReturnFilmes";
-import Loading from "./loading";
+import Loading from "./Loading";
 
 const Container =  ({ tipoDeBuscaFilme,page })=>{
 
