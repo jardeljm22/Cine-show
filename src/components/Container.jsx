@@ -2,50 +2,50 @@ import { useEffect, useState } from "react";
 //import  {getFilmesLancamentos,getFilmesPopulares,getFilmesBemAvaliados} from '../services/service'
 import '../Styles/Container.css';
 import { useNavigate } from "react-router-dom";
-import { useReturnFilmes } from "../hooks/useReturnFilmes";
+import { useReturnMovies } from "../hooks/useReturnMovies";
 import Loading from "./Loading";
 
-const Container =  ({ tipoDeBuscaFilme,page })=>{
+const Container =  ({ typeOfSearchMovie,pageInicial })=>{
 
-    const [nomeDescricao,setNomeDescricao] = useState('');
-    const {listaFilmes,loading,error} = useReturnFilmes({tipoDeBuscaFilme : tipoDeBuscaFilme,pageInicial : page})
+    const [nameDescription,setNameDescription] = useState('');
+    const {listMovies,loading,error} = useReturnMovies({typeOfSearchMovie,pageInicial})
     const urlImage = import.meta.env.VITE_TMDB_URL_IMAGE;
 
     const navigate = useNavigate()
 
-    const verDetalhesFilme = (id) =>{
-        navigate(`/detalhesFilme/${id}`)
+    const seeDetailsMovie = (id) =>{
+        navigate(`/detailsMovie/${id}`)
     }
 
-    const tipoDeBusca = (tipo) =>{
+    const typeOfSearch = (tipo) =>{
         switch(tipo){
             case '1' :
-                navigate('filmes/tipoDeBusca/1')
+                navigate('movies/typeOfSearch/1')
                 break;
             case '2' :
-                navigate('filmes/tipoDeBusca/2')
+                navigate('movies/typeOfSearch/2')
                 break;
             case '3' :
-                navigate('filmes/tipoDeBusca/3')
+                navigate('movies/typeOfSearch/3')
                 break;
         }
     }
 
     useEffect(()=>{
-        let resultado;
-        switch(tipoDeBuscaFilme){   
+        let results;
+        switch(typeOfSearchMovie){   
             case '1' :
-                resultado = 'Lançamentos'
+                results = 'Lançamentos'
                 break;
             case '2' :
-                resultado = 'Filmes Populares'
+                results = 'Filmes Populares'
                 break;
             case '3' :
-                resultado = 'Filmes Bem Avaliados'
+                results = 'Filmes Bem Avaliados'
                 break;
         }
         // eslint-disable-next-line react-hooks/set-state-in-effect
-        setNomeDescricao(resultado);
+        setNameDescription(results);
     },[]) ;   
     
     if(loading){
@@ -61,19 +61,19 @@ const Container =  ({ tipoDeBuscaFilme,page })=>{
     return(
         <section className="section-container">
             <div className="description-container" >
-                <h1 onClick={()=>{tipoDeBusca(tipoDeBuscaFilme)}} >{ nomeDescricao  }</h1>
+                <h1 onClick={()=>{typeOfSearch(typeOfSearchMovie)}} >{ nameDescription  }</h1>
             </div>
             <div className="div-container">
-                {listaFilmes?.map((objeto)=>{
+                {listMovies?.map((movie)=>{
                     return (
-                        <div  onClick={()=>{verDetalhesFilme(objeto.id)}} key={objeto.id} className="div-container-information" >
-                            <img  src={`${urlImage}${objeto.poster_path}`} alt="imagens do filme" />
-                            <h3 > { objeto.title } </h3>
+                        <div  onClick={()=>{seeDetailsMovie(movie.id)}} key={movie.id} className="div-container-information" >
+                            <img  src={`${urlImage}${movie.poster_path}`} alt="imagens do filme" />
+                            <h3 > { movie.title } </h3>
                         </div>
                     )
                     })
                 }
-                <div  onClick={()=>{tipoDeBusca(tipoDeBuscaFilme)}} key={25} className="div-container-information" >
+                <div  onClick={()=>{typeOfSearch(typeOfSearchMovie)}} className="div-container-information" >
                         <p style={{marginTop:'120px'}}>mais filmes...</p>      
                 </div>
             </div>

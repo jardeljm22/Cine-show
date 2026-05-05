@@ -2,8 +2,8 @@
 
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import Home from "../pages/Home";
-import DetalhesFilmes from "../pages/DetalhesDoFilme";
-import Filmes from "../pages/Filmes";
+import DetailsMovies from "../pages/DetailsMovies";
+import Movie from "../pages/Movies";
 import Series from "../pages/series";
 const Rotes = () =>{
 
@@ -12,9 +12,9 @@ const Rotes = () =>{
         <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/series" element={<Series/>} />
-            <Route path="/filmes/:nomefilme" element={<Filmes/>} />
-            <Route path="/filmes/tipoDeBusca/:tipoDeBusca" element={<Filmes/>} />
-            <Route path="/detalhesFilme/:id" element={<DetalhesFilmes/>} />
+            <Route path="/movies/:nameMovie" element={<Movie/>} />
+            <Route path="/movies/typeOfSearch/:typeOfSearch" element={<Movie/>} />
+            <Route path="/detailsMovie/:id" element={<DetailsMovies/>} />
 
         </Routes>
 

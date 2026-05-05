@@ -323,12 +323,11 @@
     .menu-icon-header{
         display: block;
         pointer-events: auto;
-        margin-left: 100px;
+        margin-left: auto;
     } 
     .navbar{
         display: none;
     }
-  
 }
 
 @media (max-width : 500px){
@@ -336,6 +335,7 @@
         width: 95%;
         height: auto;
         overflow: hidden;
+         justify-content: flex-start;
     }
     .header-div-Buscar-filme{
     display: flex;

@@ -5,14 +5,14 @@ import '../Styles/DetalhesDoFilme.css'
 import { useParams } from "react-router-dom";
 import Footer from "../components/footer";
 import Loading from "../components/Loading";
-import { useDetalhesFilmes } from "../hooks/useDetalhesFilmes";
+import { useDetailsMovie } from "../hooks/useDetailsMovie";
 
 
-const DetalhesDoFilme = () =>{
+const DetailsMovies = () =>{
 
     const [assistir,setAssistir] = useState(false);
     const { id } = useParams()
-    const { filme,diretor,loading,error,tempoFilme } = useDetalhesFilmes({id : id});
+    const { filme,diretor,loading,error,tempoFilme } = useDetailsMovie({id : id});
 
 
     const assistirFilme = () =>{
@@ -28,13 +28,16 @@ const DetalhesDoFilme = () =>{
         )
     }
     if(error){
-        return <div className="center-screen" >
-            <h1>{error}</h1>
-            <Footer/>
-        </div>
+        return (   
+            <div className="center-screen" >
+                <div className="mensage-error-deltalhes-filme" >
+                    <h1>{ error } <br/> tente novamente mais tarde. </h1>
+                </div>
+                <Footer/>
+            </div> )
     }  
     return (
-        <div className="filme-container">
+        <div className= 'filme-container' >          
             <div className="background-filme" >
                 <img src={  filme?.backdrop_path&&`https://image.tmdb.org/t/p/original/${filme?.backdrop_path}`} alt="" />
             </div>
@@ -65,13 +68,13 @@ const DetalhesDoFilme = () =>{
                 <button onClick={assistirFilme} >fechar</button>
                 {
                     assistir&&<iframe
-                                    src={`https://superflixapi.rest/filme/${filme?.imdb_id}`}
-                                    title={filme?.title}
-                                    allowFullScreen
-                                    allow="fullscreen; autoplay; encrypted-media; picture-in-picture"
-                                    frameBorder="0"
-                                    style={{ width: '95%', height: '800px', border: 0 }}
-                            ></iframe>
+                        src={`https://superflixapi.rest/filme/${filme?.imdb_id}`}
+                        title={filme?.title}
+                        allowFullScreen
+                        allow="fullscreen; autoplay; encrypted-media; picture-in-picture"
+                        frameBorder="0"
+                        style={{ width: '95%', height: '800px', border: 0 }}
+                ></iframe>
                 }
             </div>
             <Footer/>
@@ -79,6 +82,6 @@ const DetalhesDoFilme = () =>{
     );
     }
 
-export default DetalhesDoFilme ;
+export default DetailsMovies ;
 
 

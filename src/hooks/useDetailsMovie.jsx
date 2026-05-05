@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getDetalhesFilme,getElencoFilme } from '../services/service';
 
 
-export function useDetalhesFilmes({id}) {
+export function useDetailsMovie({id}) {
 
     const [filme,setFilme] = useState({});
     const [diretor,setDiretor] = useState(null);
@@ -37,13 +37,13 @@ export function useDetalhesFilmes({id}) {
                     const filme = await getDetalhesFilme(id);// buscando os detalhes do filme
                     converteHoras(filme.runtime);// convertendo o tempo do filme de minutos para horas e minutos
                     setFilme(filme);
-                    const resposta = await getElencoFilme(id); // buscando o elenco do filme para encontrar o diretor
-                    const diretor = resposta.crew?.find(dir=> dir.job === 'Director')// procurando o diretor no elenco do filme
+                    const response = await getElencoFilme(id); // buscando o elenco do filme para encontrar o diretor
+                    const diretor = response.crew?.find(dir=> dir.job === 'Director')// procurando o diretor no elenco do filme
                     setDiretor(diretor?.name)
 
                 } catch (error) {
                     console.error('Erro ao carregar os detalhes do filme:', error);
-                    setError('erro ao carregar os detalhes do filme ');
+                    setError('erro ao carregar os detalhes do filme ...');
                 }finally{
                     setLoading(false);
                 }

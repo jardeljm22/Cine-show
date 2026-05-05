@@ -11,16 +11,15 @@ const Footer = () =>{
                 <h2 className="logo"><Clapperboard /> CineShow</h2>
                 <div className="links-footer">
                     <Link className='link-footer' to="/">Início</Link>
-                    <Link className='link-footer' to="/filmes/tipoDeBusca/1">Filmes</Link>
+                    <Link className='link-footer' to="/movies/typeOfSearch/1">Filmes</Link>
                     <Link className='link-footer' to="/series">Séries</Link>
 
                 </div>
                 <p className="copy" >
-                    <Copyright size={13}/> 2026 CineShow &nbsp;• &nbsp;Desenvolvido por Jardel Mendes  •  Dados fornecidos por TMDB
+                    <Copyright size={13}/> 2026 CineShow &nbsp;- &nbsp;Desenvolvido por Jardel Mendes  -  Dados fornecidos por TMDB
                 </p>
             </div>
-            </footer> 
-
+        </footer> 
     )
 }
 

@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 
 
-export function useVerificaTela() {
+export function useVerifyScreen() {
 
 
 const [isMobile, setIsMobile] = useState( window.innerWidth < 851 );

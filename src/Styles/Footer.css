@@ -2,29 +2,28 @@
 .footer {
   background: #0d0d0d;
   color: #fff;
-  padding: 30px 20px;
   margin-top: 40px;
   display: flex;
-  align-items: center;
-  justify-content: center;
   height: 200px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 
 }
 
 .footer-container {
   max-width: 1200px;
-  margin: auto;
+  width: 100%;
   text-align: center;
+
+  
 }
 
 .logo {
   font-size: 24px;
   margin-bottom: 15px;
   color: #e50914; 
-}
-
-.links {
-  margin-bottom: 15px;
 }
 
 .link-footer {
@@ -65,5 +64,7 @@
 .copy{
   font-size: 11px;
 }
-
+.footer-container{
+  width: 90%;
+}
 }
