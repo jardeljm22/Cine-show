@@ -24,6 +24,13 @@ const Movies = ({ typeOfSearch , nameMovie='' ,pageMovie}) =>{ // sempre será r
             </div>
         )
     }
+    if(listMovies.length === 0){
+        return (
+            <div className="center-screen">
+                <h1>nenhum filme encontrado com esse nome! tente novamente!</h1>
+            </div>
+        )
+    }
     return (
         <article className="article-filmes"  >
             <hr />

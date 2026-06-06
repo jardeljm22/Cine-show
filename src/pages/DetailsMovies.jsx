@@ -67,14 +67,8 @@ const DetailsMovies = () =>{
             <div className={`${assistir? 'mostrar-div-player-filme': 'nao-mostrar-div-player-filme' }`} >
                 <button onClick={assistirFilme} >fechar</button>
                 {
-                    assistir&&<iframe
-                        src={`https://superflixapi.rest/filme/${filme?.imdb_id}`}
-                        title={filme?.title}
-                        allowFullScreen
-                        allow="fullscreen; autoplay; encrypted-media; picture-in-picture"
-                        frameBorder="0"
-                        style={{ width: '95%', height: '800px', border: 0 }}
-                ></iframe>
+                    assistir&&<iframe src={`https://playerflixapi.com/filme/${filme?.imdb_id}`} allow="fullscreen; autoplay; encrypted-media; picture-in-picture" allowfullscreen frameborder="0"  style={{width:'95%',border:0,height:'70vh'}}>
+      </iframe>
                 }
             </div>
             <Footer/>
