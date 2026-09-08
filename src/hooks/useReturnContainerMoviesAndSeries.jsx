@@ -3,16 +3,32 @@ import{
     getFilmesBemAvaliados
     ,getFilmesLancamentos
     ,getFilmesPopulares,
-    getProcuraFilmePorNome
+    getProcuraFilmePorNome,
+    getseriesBemAvaliadas,
+    getSeriesLancamentos,
+    getSeriesPopulares
 } from '../services/service'
+import { useNavigate } from "react-router-dom";
 
-export function useReturnMovies({ typeOfSearchMovie,nameMovie,pageInicial }) {
+
+export function useReturnContainerMoviesAndSeries({ typeOfSearchMovie,nameMovie,pageInicial }) {
 
     const [page,setPage] = useState( () => pageInicial ?? 1); // se tiver um valor valido em page inicial seta, se nao seta 1,usando funcao para evitar chamar toda vez 
     const [totalPages,setTotalPages] = useState(0);
     const [listMovies,setListMovies] = useState([]);
     const [loading,setLoading] = useState(false);
     const [error,setError] = useState(null);
+    const navigate = useNavigate() 
+
+    
+    const detailsMovie = (movie) =>{
+
+        navigate(`/detailsMovie/${movie.id}`) // direciona para a pagina detalhes do filme
+    }
+    const detailsSerie = (serie) =>{
+
+        navigate(`/detailsSerie/${serie.id}`) // direciona para a pagina detalhes da serie
+    }
 
     const searchData =  useCallback( async (valuePage) => { 
                 switch(typeOfSearchMovie){
@@ -22,6 +38,12 @@ export function useReturnMovies({ typeOfSearchMovie,nameMovie,pageInicial }) {
                 return  getFilmesPopulares(valuePage);
             case '3' :
                 return getFilmesBemAvaliados(valuePage);
+            case '4' :
+                return getSeriesPopulares(valuePage);
+            case '5' :
+                return getseriesBemAvaliadas(valuePage);
+            case '6' :
+                return getSeriesLancamentos(valuePage);
             default :
                 return  getProcuraFilmePorNome(nameMovie,valuePage);
         }
@@ -56,5 +78,5 @@ export function useReturnMovies({ typeOfSearchMovie,nameMovie,pageInicial }) {
 
     },[page,searchData]);
 
-    return{listMovies,totalPages,page,setPage,loading,error}
+    return{listMovies,totalPages,page,setPage,detailsMovie,detailsSerie,loading,error }
 }

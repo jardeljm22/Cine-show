@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 //import  {getFilmesLancamentos,getFilmesPopulares,getFilmesBemAvaliados} from '../services/service'
 import '../Styles/Container.css';
 import { useNavigate } from "react-router-dom";
-import { useReturnMovies } from "../hooks/useReturnMovies";
+import { useReturnContainerMoviesAndSeries} from "../hooks/useReturnContainerMoviesAndSeries";
 import Loading from "./Loading";
 
 const Container =  ({ typeOfSearchMovie,pageInicial })=>{
 
     const [nameDescription,setNameDescription] = useState('');
-    const {listMovies,loading,error} = useReturnMovies({typeOfSearchMovie,pageInicial})
+    const {listMovies,loading,error} = useReturnContainerMoviesAndSeries({typeOfSearchMovie,pageInicial})
     const urlImage = import.meta.env.VITE_TMDB_URL_IMAGE;
 
     const navigate = useNavigate()
@@ -27,9 +27,11 @@ const Container =  ({ typeOfSearchMovie,pageInicial })=>{
                 break;
             case '3' :
                 navigate('movies/typeOfSearch/3')
+
                 break;
         }
     }
+
 
     useEffect(()=>{
         let results;
@@ -43,6 +45,10 @@ const Container =  ({ typeOfSearchMovie,pageInicial })=>{
             case '3' :
                 results = 'Filmes Bem Avaliados'
                 break;
+            case '4' :
+                results = 'Series Populares'
+                break;
+                
         }
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setNameDescription(results);

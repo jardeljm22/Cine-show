@@ -1,6 +1,6 @@
 import Container from "../components/Container";
 import Header from "../components/Header";
-import Movies from '../components/Movies';
+import Movies from '../components/ContainerMoviesAndSeries';
 import Footer from "../components/footer";
 
 const Home = () =>{

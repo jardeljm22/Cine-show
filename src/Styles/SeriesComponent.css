@@ -4,6 +4,10 @@
     height: 490px;
     padding-left : 20px ;
 }
+
+.div-mensagem-serie{
+    color: white;
+}
 @media(max-width : 780px){
     .div-mensagem-serie{
     height: 554px;

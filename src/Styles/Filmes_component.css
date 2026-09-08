@@ -46,17 +46,18 @@
     height: 350px;
     padding-top: 5px;
 }
-.informations-article-filme h2 {
+
+.informations-article-filme h2{
     white-space: nowrap;
+    color:#fff;
     text-overflow: ellipsis;
     overflow: hidden;
-    text-align: center;
-    width: 90%;
-    height: 45px;
-    font-size: 20px;
-    text-shadow: 2px 2px black;
+    text-align:center;
+    width:90%;
+    height:45px;
+    font-size:20px;
+    text-shadow:2px 2px black;
 }
-
 
 .mudar-pagina-filmes{
     display: flex;
@@ -131,11 +132,19 @@
     height: 100vh;
     width: 100%;
 }
+.center-screen h1{
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    text-shadow: 2px 2px black;
+}
 
 @media(max-width : 1400px){
     .article-filmes{
        width: 950px;
        flex-direction: row;
+    }
+    .mensage-error{
+        font-size: 15px;
     }
 }
 @media(max-width : 1000px ){
@@ -197,5 +206,10 @@
 
     .informations-article-filme h2 {
         font-size: 14px;
+    }
+    .mensage-error{
+        font-size: 10px;
+
+
     }
 }

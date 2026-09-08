@@ -1,5 +1,5 @@
 
-import ComponentMovie  from '../components/Movies'
+import ComponentMovie  from '../components/ContainerMoviesAndSeries'
 import Header from '../components/Header'
 import { useParams } from 'react-router-dom'
 import Footer from '../components/footer'

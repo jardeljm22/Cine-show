@@ -1,45 +1,28 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-import { useEffect, useState} from "react";
 import  '../Styles/Header.css';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link,} from 'react-router-dom'
 import {ChevronDown,Menu ,X} from'lucide-react'
 import logo from '../assets/logo.png'
-import { useVerifyScreen } from "../hooks/useVerifyScreen";
+import {useHeader} from '../hooks/useHeader'
 
 const Header = () => {
 
-    const [nomeFilme,setNomeFilme] = useState('');
-    const [galeriaFilmes,setGaleriaFilmes] = useState(false);
-    const [mensageAlertaNomeVazio,setMensageAlertaNomeVazio] = useState(false)
-    const [menu,setMenu] = useState(false);
-    const [optionsMenuFilmes,setOptionsMenuFilmes] = useState(false);
-    const [optionsMenuSeries,setOptionsMenuSeries] = useState(false);
-    const navigate = useNavigate();
-    const isMobile = useVerifyScreen(); // verifica se a tela aumentou acima de 678 para remover o menu central caso a tela aumente e ele esteja ativado
+    const {nomeFilme,
+        setNomeFilme,
+        procurarFilme,
+        menu,
+        setMenu,
+        optionsMenuFilmes,
+        setOptionsMenuFilmes,
+        optionsMenuSeries,
+        setOptionsMenuSeries,
+        mensageAlertaNomeVazio,
+        setMensageAlertaNomeVazio,
+        fechaMenu,
+        openMenu,
+        menuOpen
 
-    const procurarFilme = (nome) =>{  // funcao q vai buscar o filme desejado
-        if(nomeFilme.length === 0 ){  // verificando se o input do nome do filme está vazio
-            setMensageAlertaNomeVazio(true)
-        }else{
-            const  nomeTratado = nome.trim().toLowerCase()    // removendo espacos e colocando tudo em minusculo
-                navigate(`/movies/${nomeTratado}`);
-        }
-    }
-
-    const mostrarMenuFilme = ()=>{
-        setGaleriaFilmes(!galeriaFilmes);
-    }
-    const fechaMenu = () =>{
-        setMenu(false) 
-        setOptionsMenuFilmes(false)
-        setOptionsMenuSeries(false)
-    }
-
-    useEffect(()=>{
-        if(!isMobile){
-            fechaMenu(); // quando nao tiver no mobile e a tela aumentar acima de 850px o menu central e os options do menu filmes e series serao fechados
-        }
-    },[isMobile]);
+    } = useHeader()
 
     return (
         <header className="header">
@@ -73,9 +56,9 @@ const Header = () => {
                         </ul>
                         <strong onClick={()=>setOptionsMenuSeries(!optionsMenuSeries)}>Séries <ChevronDown className={`seta ${optionsMenuSeries?'gira-seta' :''}` }/></strong>
                         <ul className={`  ${optionsMenuSeries ?'options-filmes':'options-filmes-off'}`} >
-                            <li><Link to='/series' className="links-filmes-header"  onClick={()=>setMenu(false)} >Lançamentos</Link></li>
-                            <li><Link to='/series'  className="links-filmes-header" onClick={()=>setMenu(false)} >Populares</Link> </li>
-                            <li><Link  to='/series'  className="links-filmes-header" onClick={()=>setMenu(false)} >Top avaliados</Link></li>
+                            <li><Link to='/series/6' className="links-filmes-header"  onClick={()=>setMenu(false)} >Lançamentos</Link></li>
+                            <li><Link to='/series/4'  className="links-filmes-header" onClick={()=>setMenu(false)} >Populares</Link> </li>
+                            <li><Link  to='/series/5'  className="links-filmes-header" onClick={()=>setMenu(false)} >Top avaliados</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -84,17 +67,28 @@ const Header = () => {
                 
             <nav className="navbar">
                 <div className="div-filmes"  >
-                    <div className="btn-filmes" onClick={mostrarMenuFilme}>
+                    <div className="btn-filmes" onClick={()=>{openMenu('filmes')}}  >
                         <strong className="link-filme-header"  >Filmes</strong>
-                        <ChevronDown className={`icone-seta-filmes ${galeriaFilmes ?'girar' :''} `} />
+                        <ChevronDown className={`icone-seta-filmes ${ menuOpen === 'filmes' ?'girar' :''} `} />
                     </div>
-                    <ul className={` ${galeriaFilmes ? 'mostra-secao-filmes' : 'secao-de-filmes'} `} onMouseLeave={mostrarMenuFilme} >
+                    <ul className={` ${menuOpen === 'filmes' ? 'mostra-secao-filmes' : 'secao-de-filmes'} ` } onMouseLeave={fechaMenu} >
                         <li> <Link to={'/movies/typeOfSearch/1'} className="links-filmes-header"   >Lançamentos</Link></li> 
                         <li> <Link to={'/movies/typeOfSearch/2'}  className="links-filmes-header" >Populares</Link></li> 
                         <li><Link to={'/movies/typeOfSearch/3'}  className="links-filmes-header" >Top avaliados</Link></li> 
                     </ul>
                 </div>
-                <Link to='/series' className="link-filme-header" ><strong>séries</strong></Link>
+                <div className="div-filmes" >
+                    <div className="btn-filmes" onClick={()=>{openMenu('series')}} onMouseLeave={()=>{menu}} >
+                        <strong className="link-filme-header"  >séries</strong>
+                        <ChevronDown className={`icone-seta-filmes ${ menuOpen === 'series' ?'girar' :''} `} />
+                    </div>
+                    <ul className={` ${ menuOpen === 'series' ? 'mostra-secao-filmes' : 'secao-de-filmes'} `} onMouseLeave={fechaMenu}>
+                        <li> <Link to={'/series/6'} className="links-filmes-header"   >Lançamentos</Link></li> 
+                        <li> <Link to={'/series/4'}  className="links-filmes-header" >Populares</Link></li> 
+                        <li><Link to={'/series/5'}  className="links-filmes-header" >Top avaliados</Link></li> 
+                    </ul>
+                </div>
+                {/*<Link to='/series' className="link-filme-header" ><strong>séries</strong></Link>*/}
             </nav>
         </header>
         )

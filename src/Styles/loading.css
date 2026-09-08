@@ -12,6 +12,7 @@
    height: 100px;
    animation: loadingAnimation 2s linear infinite;
    -webkit-animation: loadingAnimation 2s linear infinite;
+   color: white;
 }
 @keyframes loadingAnimation {
     0% {
