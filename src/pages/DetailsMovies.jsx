@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import Footer from "../components/footer";
 import Loading from "../components/Loading";
 import { useDetailsMovie } from "../hooks/useDetailsMovie";
+import MovieserverSelector from "../components/MovieServerSelector";
 
 
 const DetailsMovies = () =>{
@@ -67,8 +68,7 @@ const DetailsMovies = () =>{
             <div className={`${assistir? 'mostrar-div-player-filme': 'nao-mostrar-div-player-filme' }`} >
                 <button onClick={assistirFilme} >fechar</button>
                 {
-                    assistir&&<iframe src={`https://playerflixapi.com/filme/${filme?.imdb_id}`} allow="fullscreen; autoplay; encrypted-media; picture-in-picture" allowfullscreen frameborder="0"  style={{width:'95%',border:0,height:'70vh'}}>
-                    </iframe>
+                    assistir&&<MovieserverSelector idMovie={filme?.imdb_id} />
                 }
             </div>
             <Footer/>
